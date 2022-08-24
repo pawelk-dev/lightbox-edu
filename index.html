@@ -16,6 +16,7 @@
             html, body {
                 font-family: 'Titillium Web';
                 height: 100%;
+                margin: 0;
             }
             
             .g-demo {
@@ -36,6 +37,85 @@
                 border-radius: 5px;
                 box-shadow:  0px 0px 50px 0px rgb(136 136 136 / 38%);
             }
+            .lightbx {
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 20px;
+                position: relative;
+            }
+            .lightbx .number {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            .lightbx .img-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .lightbx .img-cnt {
+                display: grid;
+                grid-template-columns: 50px auto 50px;
+                column-gap: 15px;
+            }
+            .lightbx .img-cnt .img {
+                border-radius: 4px;
+            }
+            .lightbx .prev, .lightbx .next {
+                background: none;
+                border: none;
+                cursor: pointer;
+                background-repeat: no-repeat;
+                background-size: 50px;
+                background-position: center;
+                opacity: 0.1;
+                transition: opacity 0.5s;
+            }
+            .lightbx .prev:hover, .lightbx .next:hover {
+                opacity: 1;
+            }
+            .lightbx .prev span, .lightbx .next span {
+                display: none;
+            }
+            .lightbx .prev {
+                background-image: url("data:image/svg+xml,%3Csvg width='83' height='83' viewBox='0 0 83 83' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='41.5' cy='41.5' r='41.5' transform='rotate(-180 41.5 41.5)' fill='white' fill-opacity='0.81'/%3E%3Cpath d='M28.9239 41.0893L47.853 22.6667C48.3392 22.1934 49.1276 22.1934 49.6138 22.6667C50.1001 23.1399 50.1001 23.9072 49.6138 24.3804L31.5651 41.9462L49.6138 59.5119C50.1001 59.9851 50.1001 60.7524 49.6138 61.2256C49.1276 61.6989 48.3392 61.6989 47.853 61.2256L28.9239 42.803C28.4376 42.3298 28.4376 41.5625 28.9239 41.0893Z' fill='%236B6B6B'/%3E%3C/svg%3E");
+            }
+            .lightbx .next {
+                background-image: url("data:image/svg+xml,%3Csvg width='83' height='83' viewBox='0 0 83 83' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='41.5' cy='41.5' r='41.5' fill='white' fill-opacity='0.81'/%3E%3Cpath d='M54.0762 41.9107L35.1471 60.3333C34.6608 60.8066 33.8725 60.8066 33.3862 60.3333C32.9 59.8601 32.8999 59.0928 33.3862 58.6196L51.4349 41.0538L33.3862 23.4881C32.9 23.0149 32.8999 22.2476 33.3862 21.7744C33.8725 21.3011 34.6608 21.3011 35.1471 21.7744L54.0762 40.197C54.5624 40.6702 54.5624 41.4375 54.0762 41.9107Z' fill='%236B6B6B'/%3E%3C/svg%3E");
+            }
+            .lightbx .img-title {
+                margin-top: 10px;
+            }
+            .thumbnails .list {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .thumbnails .list img {
+                width: 80px;
+                height: 80px;
+                margin: 5px;
+                border-radius: 4px;
+            }
+            .lightbx .close {
+                width: 50px;
+                height: 50px;
+                border: none;
+                background: none;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 83 83' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='41.5' cy='41.5' r='41.5' fill='white' fill-opacity='0.91'/%3E%3Cpath d='M44.0547 42.4913L25.1255 60.9139C24.6393 61.3871 23.8509 61.3871 23.3647 60.9139C22.8784 60.4406 22.8784 59.6734 23.3647 59.2002L41.4134 41.6344L23.3647 24.0687C22.8784 23.5954 22.8784 22.8282 23.3647 22.3549C23.851 21.8817 24.6393 21.8817 25.1255 22.3549L44.0547 40.7775C44.5409 41.2508 44.5409 42.018 44.0547 42.4913Z' fill='%236B6B6B'/%3E%3Cpath d='M42.3646 42.4913L61.2938 60.9139C61.78 61.3871 62.5684 61.3871 63.0546 60.9139C63.5409 60.4406 63.5409 59.6734 63.0546 59.2002L45.0059 41.6344L63.0546 24.0687C63.5409 23.5954 63.5409 22.8282 63.0546 22.3549C62.5684 21.8817 61.78 21.8817 61.2938 22.3549L42.3646 40.7775C41.8784 41.2508 41.8784 42.018 42.3646 42.4913Z' fill='%236B6B6B'/%3E%3C/svg%3E");
+                opacity: 0.2;
+                transition: opacity 0.5s;
+            }
+            .lightbx .close:hover {
+                opacity: 1;
+            }
+            .lightbx .close span {display: none;}
         </style>
     </head>
     <body>
@@ -54,6 +134,32 @@
                 <a href="" class="g-el"><img src="img/thb-blank.png" alt=""></a>
                 <a href="" class="g-el"><img src="img/thb-blank.png" alt=""></a>
             </div>
+        </div>
+        <div class="lightbx">
+            <div class="img-box">
+                <div class="number">1 / 2</div>
+                <div class="img-cnt">
+                    <button class="prev"><span>Poprzedni</span></button>
+                    <img src="img/flower-1.jpg" alt="" class="img">
+                    <button class="next"><span>Następny</span></button>
+                </div>
+                <div class="img-title">
+                    Kwiatek pomarańczowy
+                </div>
+            </div>
+            <div class="thumbnails">
+                <div class="list">
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                    <a href=""><img src="img/thb-blank.png" alt=""></a>
+                </div>
+            </div>
+            <button class="close"><span>Zamknij</span></button>
         </div>
         <script src="lightbx.js" async defer></script>
     </body>
