@@ -41,7 +41,15 @@
                 background-color: rgba(0, 0, 0, 0.9);
                 color: #fff;
                 padding: 20px;
-                position: relative;
+                position: fixed;
+                top: 0;
+                right: 0;
+                left:0;
+                bottom: 0;
+                height: 100%;
+                box-sizing: border-box;
+                display: grid;
+                grid-template-rows: 85vh 1fr;
             }
             .lightbx .number {
                 text-align: center;
@@ -54,12 +62,19 @@
                 align-items: center;
             }
             .lightbx .img-cnt {
-                display: grid;
-                grid-template-columns: 50px auto 50px;
-                column-gap: 15px;
+                display: flex;
+                flex-direction: row;
             }
             .lightbx .img-cnt .img {
                 border-radius: 4px;
+                max-height: 100%;
+                object-fit: cover;
+                max-width: 100%;
+                height: 100%;
+                width: auto;
+                max-height: 75vh;
+                display: block;
+
             }
             .lightbx .prev, .lightbx .next {
                 background: none;
@@ -68,8 +83,9 @@
                 background-repeat: no-repeat;
                 background-size: 50px;
                 background-position: center;
-                opacity: 0.1;
+                opacity: 0.6;
                 transition: opacity 0.5s;
+                width: 70px;
             }
             .lightbx .prev:hover, .lightbx .next:hover {
                 opacity: 1;
@@ -109,7 +125,7 @@
                 right: 20px;
                 cursor: pointer;
                 background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 83 83' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='41.5' cy='41.5' r='41.5' fill='white' fill-opacity='0.91'/%3E%3Cpath d='M44.0547 42.4913L25.1255 60.9139C24.6393 61.3871 23.8509 61.3871 23.3647 60.9139C22.8784 60.4406 22.8784 59.6734 23.3647 59.2002L41.4134 41.6344L23.3647 24.0687C22.8784 23.5954 22.8784 22.8282 23.3647 22.3549C23.851 21.8817 24.6393 21.8817 25.1255 22.3549L44.0547 40.7775C44.5409 41.2508 44.5409 42.018 44.0547 42.4913Z' fill='%236B6B6B'/%3E%3Cpath d='M42.3646 42.4913L61.2938 60.9139C61.78 61.3871 62.5684 61.3871 63.0546 60.9139C63.5409 60.4406 63.5409 59.6734 63.0546 59.2002L45.0059 41.6344L63.0546 24.0687C63.5409 23.5954 63.5409 22.8282 63.0546 22.3549C62.5684 21.8817 61.78 21.8817 61.2938 22.3549L42.3646 40.7775C41.8784 41.2508 41.8784 42.018 42.3646 42.4913Z' fill='%236B6B6B'/%3E%3C/svg%3E");
-                opacity: 0.2;
+                opacity: 0.8;
                 transition: opacity 0.5s;
             }
             .lightbx .close:hover {
@@ -143,9 +159,7 @@
                     <img src="img/flower-1.jpg" alt="" class="img">
                     <button class="next"><span>Następny</span></button>
                 </div>
-                <div class="img-title">
-                    Kwiatek pomarańczowy
-                </div>
+                <div class="img-title">Kwiatek pomarańczowy</div>
             </div>
             <div class="thumbnails">
                 <div class="list">
@@ -158,8 +172,9 @@
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                 </div>
+                <button class="close"><span>Zamknij</span></button>
             </div>
-            <button class="close"><span>Zamknij</span></button>
+            
         </div>
         <script src="lightbx.js" async defer></script>
     </body>
