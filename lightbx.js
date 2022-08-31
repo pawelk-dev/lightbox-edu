@@ -10,6 +10,8 @@
                 this.title = this.lightbox.querySelector('.img-title')
                 this.close = this.lightbox.querySelector('.close');
                 this.list = this.lightbox.querySelector('.list');
+                this.thumbnails = [];
+                this.images = null;
                 this.bindEvents();
             }
 
@@ -57,6 +59,14 @@
         console.log('Next');
        }
 
+       createImageList() {
+        this.images = document.querySelector('.gallery').querySelectorAll('.g-el');
+        this.images.forEach( (e, key) => {
+            console.log(e.getAttribute('href'));
+            e.setAttribute('title', `Image ${key}`);
+        });
+       }
+
         bindEvents() {
             this.close.addEventListener('click', e=>{
                 this.closeLightbox();
@@ -72,6 +82,7 @@
         }
     }
     const lightbox = new Lightbox();
+    lightbox.createImageList();
 
     const tstBtn = document.querySelector('.btn-test');
             tstBtn.addEventListener('click', e => {
