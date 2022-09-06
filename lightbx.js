@@ -12,6 +12,8 @@
                 this.list = this.lightbox.querySelector('.list');
                 this.thumbnails = [];
                 this.images = null;
+                this.currentImg = null;
+                this.createImageList();
                 this.bindEvents();
             }
 
@@ -52,16 +54,28 @@
         }
 
        prevImg() {
-        console.log('Prev');
+        this.currentImg--;
+        const pImg = this.images[this.currentImg];
+        this.showImage(pImg.getAttribute('href'), pImg.getAttribute('title'));
        }
 
        nextImg() {
-        console.log('Next');
+        this.currentImg++;
+        const nextImage = this.images[this.currentImg];
+        console.log(nextImage);
+        this.showImage(nextImage.getAttribute('href'), nextImage.getAttribute('title'));
+       }
+
+       showImage(href, txt) {
+            this.title.innerHTML = txt;
+            console.log(this.img);
+            this.img.setAttribute('src', href);
+            //this.img.src = href;
        }
 
        createImageList() {
         this.images = document.querySelector('.gallery').querySelectorAll('.g-el');
-        this.images.forEach( (e, key) => {
+        this.images.forEach((e, key) => {
             console.log(e.getAttribute('href'));
             e.setAttribute('title', `Image ${key}`);
         });
@@ -79,10 +93,21 @@
             this.prev.addEventListener('click', e => {
                 this.prevImg();
             });
+            
+            
+            this.images.forEach((i, key) => {
+                i.addEventListener('click', e => {
+                    e.preventDefault();
+                    console.log(i.getAttribute('title'));
+                    this.currentImg = key;
+                    console.log(this.currentImg);
+                    this.showLightbox();
+                    this.showImage(i.getAttribute('href'), i.getAttribute('title'));
+                })
+            });
         }
     }
     const lightbox = new Lightbox();
-    lightbox.createImageList();
 
     const tstBtn = document.querySelector('.btn-test');
             tstBtn.addEventListener('click', e => {
