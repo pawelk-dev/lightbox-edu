@@ -62,7 +62,6 @@
        nextImg() {
         this.currentImg++;
         const nextImage = this.images[this.currentImg];
-        console.log(nextImage);
         this.showImage(nextImage.getAttribute('href'), nextImage.getAttribute('title'));
        }
 
