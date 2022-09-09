@@ -107,9 +107,4 @@
         }
     }
     const lightbox = new Lightbox();
-
-    const tstBtn = document.querySelector('.btn-test');
-            tstBtn.addEventListener('click', e => {
-                lightbox.showLightbox();
-            });
 }
