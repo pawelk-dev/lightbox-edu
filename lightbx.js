@@ -57,18 +57,21 @@
         this.currentImg--;
         const pImg = this.images[this.currentImg];
         this.showImage(pImg.getAttribute('href'), pImg.getAttribute('title'));
+        //TODO: Add a condition - if the first photo was clicked - the next click should go to the last photo
        }
 
        nextImg() {
         this.currentImg++;
         const nextImage = this.images[this.currentImg];
         this.showImage(nextImage.getAttribute('href'), nextImage.getAttribute('title'));
+        //TODO: Add a condition - if you clicked on the last photo - the next click should return to photo 1
        }
 
        showImage(href, txt) {
             this.title.innerHTML = txt;
             console.log(this.img);
             this.img.setAttribute('src', href);
+            this.number.innerHTML = this.generateCounter();
             //this.img.src = href;
        }
 
@@ -80,6 +83,9 @@
         });
        }
 
+       generateCounter() {
+        return `${this.currentImg + 1} / ${this.images.length}` ;
+       }
         bindEvents() {
             this.close.addEventListener('click', e=>{
                 this.closeLightbox();
