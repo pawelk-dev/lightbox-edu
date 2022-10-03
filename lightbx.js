@@ -31,7 +31,7 @@
                 <div class="img-title">Kwiatek pomarańczowy</div>
             </div>
             <div class="thumbnails">
-                <div class="list">
+            <!--    <div class="list">
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
@@ -40,23 +40,29 @@
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
-                </div>
+                </div>-->
                 <button class="close"><span>Zamknij</span></button>
             </div>
             `;
             return lightbox;
         }
         showLightbox() {
+            this.lightbox.style.opacity = 0;
             document.body.append(this.lightbox);
+            const animate = this.lightbox.animate([
+                {opacity: 0},
+                {opacity: 1}
+            ], {duration: 130})
+            animate.onfinish = () => this.lightbox.style.opacity = 1;
         }
         closeLightbox() {
-            this.lightbox.remove();
+            const animate = this.lightbox.animate([{opacity: 1}, {opacity: 0}], {duration: 130});
+            animate.onfinish = () => this.lightbox.remove();
         }
 
        prevImg() {
         this.currentImg--;
         if(this.currentImg < 0){this.currentImg = this.images.length - 1;}
-        console.log(this.currentImg);
         const pImg = this.images[this.currentImg];
         this.showImage(pImg.getAttribute('href'), pImg.getAttribute('title'));
        }
@@ -70,16 +76,14 @@
 
        showImage(href, txt) {
             this.title.innerHTML = txt;
-            console.log(this.img);
             this.img.setAttribute('src', href);
             this.number.innerHTML = this.generateCounter();
-            //this.img.src = href;
        }
 
        createImageList() {
         this.images = document.querySelector('.gallery').querySelectorAll('.g-el');
         this.images.forEach((e, key) => {
-            console.log(e.getAttribute('href'));
+            //console.log(e.getAttribute('href'));
             e.setAttribute('title', `Image ${key}`);
         });
        }
@@ -104,9 +108,9 @@
             this.images.forEach((i, key) => {
                 i.addEventListener('click', e => {
                     e.preventDefault();
-                    console.log(i.getAttribute('title'));
+                    //console.log(i.getAttribute('title'));
                     this.currentImg = key;
-                    console.log(this.currentImg);
+                    //console.log(this.currentImg);
                     this.showLightbox();
                     this.showImage(i.getAttribute('href'), i.getAttribute('title'));
                 })
