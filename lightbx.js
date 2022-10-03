@@ -31,7 +31,7 @@
                 <div class="img-title">Kwiatek pomarańczowy</div>
             </div>
             <div class="thumbnails">
-            <!--    <div class="list">
+            <div class="list">
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
@@ -40,7 +40,7 @@
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
-                </div>-->
+                </div>
                 <button class="close"><span>Zamknij</span></button>
             </div>
             `;
