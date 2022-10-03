@@ -55,16 +55,17 @@
 
        prevImg() {
         this.currentImg--;
+        if(this.currentImg < 0){this.currentImg = this.images.length - 1;}
+        console.log(this.currentImg);
         const pImg = this.images[this.currentImg];
         this.showImage(pImg.getAttribute('href'), pImg.getAttribute('title'));
-        //TODO: Add a condition - if the first photo was clicked - the next click should go to the last photo
        }
 
        nextImg() {
         this.currentImg++;
+        if (this.currentImg > (this.images.length - 1)) {this.currentImg = 0;}
         const nextImage = this.images[this.currentImg];
         this.showImage(nextImage.getAttribute('href'), nextImage.getAttribute('title'));
-        //TODO: Add a condition - if you clicked on the last photo - the next click should return to photo 1
        }
 
        showImage(href, txt) {
