@@ -64,26 +64,23 @@
         this.currentImg--;
         if(this.currentImg < 0){this.currentImg = this.images.length - 1;}
         const pImg = this.images[this.currentImg];
-        this.img.style.opacity = 0;
-        const anim = this.img.animate([{opacity: 0},{opacity: 1}], {duration: 130});
-        this.showImage(pImg.getAttribute('href'), pImg.getAttribute('title'));
-        anim.onfinish = () => {this.img.style.opacity = 1;}
+        this.showImage(pImg);
        }
 
        nextImg() {
         this.currentImg++;
         if (this.currentImg > (this.images.length - 1)) {this.currentImg = 0;}
         const nextImage = this.images[this.currentImg];
-        this.img.style.opacity = 0;
-        const animate = this.img.animate([{opacity: 0},{opacity: 1}], {duration: 130});
-        this.showImage(nextImage.getAttribute('href'), nextImage.getAttribute('title'));
-        animate.onfinish = () => {this.img.style.opacity = 1;}
+        this.showImage(nextImage);
        }
 
-       showImage(href, txt) {
-            this.title.innerHTML = txt;
-            this.img.setAttribute('src', href);
-            this.number.innerHTML = this.generateCounter();
+       showImage(img) {
+        this.img.style.opacity = 0;
+        const animate = this.img.animate([{opacity: 0},{opacity: 1}], {duration: 130});
+        this.title.innerHTML = img.getAttribute('title');
+        this.img.setAttribute('src', img.getAttribute('href'));
+        this.number.innerHTML = this.generateCounter();
+        animate.onfinish = () => {this.img.style.opacity = 1;}
        }
 
        createImageList() {
@@ -118,7 +115,7 @@
                     this.currentImg = key;
                     //console.log(this.currentImg);
                     this.showLightbox();
-                    this.showImage(i.getAttribute('href'), i.getAttribute('title'));
+                    this.showImage(i);
                 })
             });
         }
