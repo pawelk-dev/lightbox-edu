@@ -85,15 +85,12 @@
 
        createImageList() {
         this.images = document.querySelector('.gallery').querySelectorAll('.g-el');
-        this.images.forEach((e, key) => {
-            //console.log(e.getAttribute('href'));
-            e.setAttribute('title', `Image ${key}`);
-        });
        }
 
        generateCounter() {
         return `${this.currentImg + 1} / ${this.images.length}` ;
        }
+
         bindEvents() {
             this.close.addEventListener('click', e=>{
                 this.closeLightbox();
