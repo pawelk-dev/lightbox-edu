@@ -117,12 +117,29 @@
                 margin-top: 10px;
                 flex-wrap: wrap;
             }
+            .thumbnails .list>div{
+                display: block;
+                background-color: #000;
+                border-radius: 4px;
+                padding: 0;
+                max-height: 80px;
+                margin: 5px;
+
+            }
             .thumbnails .list img {
                 width: 80px;
                 height: 80px;
-                margin: 5px;
                 border-radius: 4px;
+                opacity: 0.5;
+                padding: 0;
+                margin: 0;
+
             }
+
+            .thumbnails .list img.current {
+                opacity: 0.5;
+            }
+
             .lightbx .close {
                 width: 50px;
                 height: 50px;

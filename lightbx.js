@@ -14,6 +14,7 @@
                 this.images = null;
                 this.currentImg = null;
                 this.createImageList();
+                this.generateThumbnails();
                 this.bindEvents();
             }
 
@@ -31,7 +32,7 @@
                 <div class="img-title">Kwiatek pomarańczowy</div>
             </div>
             <div class="thumbnails">
-            <div class="list">
+            <!--<div class="list">
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
@@ -40,7 +41,7 @@
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
                     <a href=""><img src="img/thb-blank.png" alt=""></a>
-                </div>
+                </div>-->
                 <button class="close"><span>Zamknij</span></button>
             </div>
             `;
@@ -89,6 +90,28 @@
 
        generateCounter() {
         return `${this.currentImg + 1} / ${this.images.length}` ;
+       }
+       
+       generateThumbnails() {
+        const list = document.createElement('div');
+        list.classList.add('list');
+        
+        this.images.forEach(i => {
+            let thb = document.createElement('img');
+            thb.src = i.querySelector('img').src;
+            thb.width = 80;
+            thb.height = 80;
+            thb.classList.add('thb');
+            this.thumbnails.push(thb);
+        });
+
+        this.thumbnails.forEach(el => {
+            let d = document.createElement('div');
+            d.appendChild(el);
+            list.appendChild(d);
+        });
+
+        this.lightbox.querySelector('.thumbnails').appendChild(list);
        }
 
         bindEvents() {
