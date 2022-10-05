@@ -131,9 +131,7 @@
             this.images.forEach((i, key) => {
                 i.addEventListener('click', e => {
                     e.preventDefault();
-                    //console.log(i.getAttribute('title'));
                     this.currentImg = key;
-                    //console.log(this.currentImg);
                     this.showLightbox();
                     this.showImage(i);
                 })
