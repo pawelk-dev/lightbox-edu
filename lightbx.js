@@ -82,6 +82,7 @@
         this.img.setAttribute('src', img.getAttribute('href'));
         this.number.innerHTML = this.generateCounter();
         animate.onfinish = () => {this.img.style.opacity = 1;}
+        this.setCurrentThumbnails();
        }
 
        createImageList() {
@@ -114,6 +115,13 @@
         this.lightbox.querySelector('.thumbnails').appendChild(list);
        }
 
+       setCurrentThumbnails() {
+        this.thumbnails.forEach(img => {
+            img.classList.remove('current');
+            this.thumbnails[this.currentImg].classList.add('current');
+        });
+       }
+
         bindEvents() {
             this.close.addEventListener('click', e=>{
                 this.closeLightbox();
@@ -127,13 +135,19 @@
                 this.prevImg();
             });
             
-            
             this.images.forEach((i, key) => {
                 i.addEventListener('click', e => {
                     e.preventDefault();
                     this.currentImg = key;
                     this.showLightbox();
                     this.showImage(i);
+                })
+            });
+
+            this.thumbnails.forEach((thb, key) => {
+                thb.addEventListener('click', e => {
+                    this.currentImg = key;
+                    this.showImage(this.images[this.currentImg]);
                 })
             });
         }
