@@ -158,6 +158,5 @@
             });
         }
     }
-    const lightbox = new Lightbox({
-        showThb: false});
+    const lightbox = new Lightbox({showThb: false});
 }
