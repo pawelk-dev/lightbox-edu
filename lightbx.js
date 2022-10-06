@@ -1,7 +1,7 @@
 /*Lightbox training project*/
 {
     class Lightbox {
-        constructor() {
+        constructor(opts) {
                 this.lightbox = this.generateLightbox();
                 this.number = this.lightbox.querySelector('.number');
                 this.prev = this.lightbox.querySelector('.prev');
@@ -13,8 +13,14 @@
                 this.thumbnails = [];
                 this.images = null;
                 this.currentImg = null;
+
+                const defaultOpts = {
+                    showThb : true
+                }
+                this.options = {...defaultOpts, ...opts}
+                
                 this.createImageList();
-                this.generateThumbnails();
+                if(this.options.showThb) {this.generateThumbnails();}
                 this.bindEvents();
             }
 
@@ -23,7 +29,7 @@
             lightbox.classList.add('lightbx');
             lightbox.innerHTML = `
             <div class="img-box">
-                <div class="number">1 / 2</div>
+                <div class="number"></div>
                 <div class="img-cnt">
                     <button class="prev"><span>Poprzedni</span></button>
                     <img src="img/flower-1.jpg" alt="" class="img">
@@ -152,5 +158,6 @@
             });
         }
     }
-    const lightbox = new Lightbox();
+    const lightbox = new Lightbox({
+        showThb: false});
 }
